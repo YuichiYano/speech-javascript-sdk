@@ -55,9 +55,9 @@ describe('WatsonSpeech.SpeechToText end-to-end', function() {
             })
           );
         setTimeout(stt.stop.bind(stt), 8 * 1000);
-        // ['end', 'close', 'data', /*'results',*/ 'result', 'error', 'stopping', 'finish', 'listening'].forEach(function (eventName) {
-        //  stt.on(eventName, console.log.bind(console, eventName + ' event: '));
-        // });
+        ['end', 'close', 'data', 'result', 'error', 'stopping', 'finish', 'listening'].forEach(function(eventName) {
+          stt.on(eventName, console.log.bind(console, eventName + ' event: '));
+        });
       })
       .catch(done);
   });

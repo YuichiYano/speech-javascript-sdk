@@ -17,8 +17,8 @@ echo '<!DOCTYPE html>
         <h1>IBM Watson Speech JavaScript SDK</h1>
     </div>
 
-    <p><a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/">Info</a>
-        | <a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/">Documentation</a>
+    <p><a href="https://www.ibm.com/watson/developer/">Info</a>
+        | <a href="https://console.bluemix.net/developer/watson/documentation">Documentation</a>
         | <a href="https://github.com/watson-developer-cloud/speech-javascript-sdk">GitHub</a>
         | <a href="https://npmjs.org/package/watson-speech">npm</a>
     </p>
@@ -28,13 +28,5 @@ echo '<!DOCTYPE html>
 ls | grep --invert-match index.html | sed 's/^.*/<li><a href="&">&<\/a><\/li>/'
 echo '    </ul>
 </div>
-<script>
-    (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,"script","//www.google-analytics.com/analytics.js","ga");
-    ga("create", "UA-59827755-9", "auto");
-    ga("send", "pageview");
-</script>
 </body>
 </html>'

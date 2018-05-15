@@ -11,8 +11,8 @@ if [ "$TRAVIS_REPO_SLUG" == "watson-developer-cloud/speech-javascript-sdk" ] && 
 
   echo "Publishing JSDoc..."
 
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "travis-ci"
+  git config --global user.email "gattana@us.ibm.com"
+  git config --global user.name "Watson Github Bot"
   git clone --branch=gh-pages https://${GH_TOKEN}@github.com/watson-developer-cloud/speech-javascript-sdk gh-pages || echo "git clone failed" && exit 1
 
   pushd gh-pages
