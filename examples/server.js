@@ -107,6 +107,7 @@ app.use('/api/speech-to-text/token', function(req, res) {
   );
 });
 
+/*
 // text to speech token endpoint
 var ttsAuthService = new watson.AuthorizationV1(
   Object.assign(
@@ -132,6 +133,7 @@ app.use('/api/text-to-speech/token', function(req, res) {
     }
   );
 });
+*/
 
 const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 app.listen(port, function() {

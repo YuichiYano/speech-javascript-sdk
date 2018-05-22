@@ -8,50 +8,57 @@
 </head>
 <body>
 <div class="container">
-<a href="/">&laquo; Examples</a>
-
 <section>
-    <h2>Transcribe from Microphone</h2>
-    <button id="button">Start Microphone Transcription</button>
-    <button id="stop">Stop</button>
+    <button id="button">Start</button>
 
-    <h2>Output:</h2>
-    <div id="output">--</div>
+    <div id="output" style="margin-top:10px;"></div>
 </section>
 
 <script src="bower_components/watson-speech/dist/watson-speech.js"></script>
+
 <!-- window.fetch pollyfill for IE/Edge & Older Chrome/FireFox -->
 <script src="bower_components/fetch/fetch.js"></script>
 
-<h2>Code for this demo:</h2>
+<script type="text/javascript">
+	const CAPTION_ON = "start";
+	const CAPTION_OFF = "stop";
+	
+	var btn = document.querySelector('#button');
+	var stream;
+	
+	btn.innerHTML = CAPTION_ON;
+	
+	btn.onclick = function () {
+		if(btn.innerHTML == CAPTION_OFF){
+			stream.stop();
+			btn.innerHTML = CAPTION_ON;
+		
+		} else{
+	  		fetch('/api/speech-to-text/token')
+	  			.then(function(response) {
+	      			return response.text();
+	  			
+	  			}).then(function (token) {
+	    			stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+	        			token: token,
+	        			model: 'ja-JP_BroadbandModel',
+	        			interimResults: false,
+	        			outputElement: '#output' // CSS selector or DOM Element
+	    			});
 
-<pre><code><script style="display: block;">
-document.querySelector('#button').onclick = function () {
+	    			stream.on('error', function(err) {
+	        			console.log(err);
+	    			});
 
-  fetch('/api/speech-to-text/token')
-  .then(function(response) {
-      return response.text();
-  }).then(function (token) {
+					btn.innerHTML = CAPTION_OFF;
+	  		}).catch(function(error) {
+	      		console.log(error);
+	  		});
 
-    var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
-        token: token,
-        outputElement: '#output' // CSS selector or DOM Element
-    });
-
-    stream.on('error', function(err) {
-        console.log(err);
-    });
-
-    document.querySelector('#stop').onclick = function() {
-      stream.stop();
-    };
-
-  }).catch(function(error) {
-      console.log(error);
-  });
-};
-
-</script></code></pre>
+		}
+	
+	};
+</script>
 
 </div>
 </body>
